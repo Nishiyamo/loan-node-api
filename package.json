@@ -4,6 +4,7 @@
   "description": "Back-end API RESTful made with Node.js, express and SQLite for loan simulation and users management.",
   "main": "src/index.js",
   "scripts": {
+    "dev": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "4.18.2",
+    "sqlite3": "^5.1.6",
     "swagger-jsdoc": "6.2.8",
     "swagger-ui-express": "5.0.0"
   },
