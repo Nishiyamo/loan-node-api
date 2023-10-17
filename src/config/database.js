@@ -1,5 +1,4 @@
 const sqlite3 = require('sqlite3').verbose()
-let sql
 
 // Connection to database
 const db = new sqlite3.Database('../../loan_api.db', sqlite3.OPEN_READWRITE,
