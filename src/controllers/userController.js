@@ -1,22 +1,31 @@
-const getUserData = (req, res) => {
-  res.send('Get all user data')
-}
+const userService = require('../services/userService')
 
-const createUser = (req, res) => {
-  res.send('Create user')
-}
+module.exports = app => {
+  const userServiceHandler = userService(app)
 
-const updateUser = (req, res) => {
-  res.send('Update user data')
-}
+  const getUser = (req, res) => {
+    const userData = userServiceHandler.getUserService(req.params.dni)
+    res.send(userData)
+  }
 
-const deleteUser = (req, res) => {
-  res.send('Delete user data')
-}
+  const createUser = (req, res) => {
+    const createdUserData = userServiceHandler.createUserService(req.params)
+    res.send(createdUserData)
+  }
 
-module.exports = {
-  getUserData,
-  createUser,
-  updateUser,
-  deleteUser
+  const updateUser = (req, res) => {
+    const updatedUserData = userServiceHandler.updateUserService(req.params)
+    res.send(updatedUserData)
+  }
+
+  const deleteUser = (req, res) => {
+    userServiceHandler.deleteUserService(req.params)
+  }
+
+  return {
+    getUser,
+    createUser,
+    updateUser,
+    deleteUser
+  }
 }

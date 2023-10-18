@@ -1,22 +1,29 @@
-const getLoanData = (req, res) => {
-  res.send('Get all Loan data')
-}
+const loanService = require('../services/loanService')
 
-const createLoan = (req, res) => {
-  res.send('Create Loan')
-}
+module.exports = app => {
+  const loanServiceHandler = loanService(app)
 
-const updateLoan = (req, res) => {
-  res.send('Update Loan data')
-}
+  const getLoan = (req, res) => {
+    const loanData = loanServiceHandler.getLoanService(req.params.dni)
+    res.send(loanData)
+  }
 
-const deleteLoan = (req, res) => {
-  res.send('Delete Loan data')
-}
+  const createLoan = (req, res) => {
+    res.send('Create Loan')
+  }
 
-module.exports = {
-  getLoanData,
-  createLoan,
-  updateLoan,
-  deleteLoan
+  const updateLoan = (req, res) => {
+    res.send('Update Loan data')
+  }
+
+  const deleteLoan = (req, res) => {
+    res.send('Delete Loan data')
+  }
+
+  return {
+    getLoan,
+    createLoan,
+    updateLoan,
+    deleteLoan
+  }
 }
