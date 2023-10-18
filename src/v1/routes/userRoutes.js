@@ -1,11 +1,14 @@
-const express = require('express')
+import { getUserData, createUser, updateUser, deleteUser } from '../../controllers/userController'
+import express from 'express'
+
 const router = express.Router()
-const userController = require('../../controllers/userController')
 
 router
-  .get('/:dni', userController.getUserData)
-  .post('/:dni', userController.createUser)
-  .patch('/:dni', userController.updateUser)
-  .delete('/:dni', userController.deleteUser)
+  .get('/:dni', getUserData)
+  .post('/:dni', createUser)
+  .patch('/:dni', updateUser)
+  .delete('/:dni', deleteUser)
 
-module.exports = router
+module.exports = app => {
+  app.use('/api/v1/user', router)
+}
