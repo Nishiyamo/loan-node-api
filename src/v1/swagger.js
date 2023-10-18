@@ -11,9 +11,7 @@ const options = {
   },
   apis: [
     'src/v1/routes/loanRoutes.js',
-    'src/v1/routes/userRoutes.js',
-    'src/models/loanModels.js',
-    'src/models/userModels.js'
+    'src/v1/routes/userRoutes.js'
   ]
 }
 
