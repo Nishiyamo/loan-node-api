@@ -5,6 +5,104 @@ module.exports = app => {
   const loanController = require('../../controllers/loanController')
   const loanControllerHandler = loanController(app)
 
+  /**
+   * @openapi
+   * /api/v1/loan:
+   *   get:
+   *     tags:
+   *       - Loans
+   *     responses:
+   *       200:
+   *         description: OK
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: object
+   *               properties:
+   *                 status:
+   *                   type: string
+   *                   example: OK
+   *                 data:
+   *                   type: array
+   *                   items:
+   *                     $ref: "#/components/schemas/Loans"
+   *   post:
+   *     tags:
+   *       - Loans
+   *     responses:
+   *       200:
+   *         description: OK
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: object
+   *               properties:
+   *                 status:
+   *                   type: string
+   *                   example: OK
+   *                 data:
+   *                   type: array
+   *                   items:
+   *                     $ref: "#/components/schemas/Loans"
+   *   patch:
+   *     tags:
+   *       - Loans
+   *     responses:
+   *       200:
+   *         description: OK
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: object
+   *               properties:
+   *                 status:
+   *                   type: string
+   *                   example: OK
+   *                 data:
+   *                   type: array
+   *                   items:
+   *                     $ref: "#/components/schemas/Loans"
+   *   delete:
+   *     tags:
+   *       - Loans
+   *     responses:
+   *       200:
+   *         description: OK
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: object
+   *               properties:
+   *                 status:
+   *                   type: string
+   *                   example: OK
+   *                 data:
+   *                   type: array
+   *                   items:
+   *                     $ref: "#/components/schemas/Loans"
+   */
+
+  /**
+   * @openapi
+   * components:
+   *   schemas:
+   *     Loans:
+   *       type: object
+   *       properties:
+   *         id:
+   *           type: Int
+   *           example: 12345
+   *         tae:
+   *           type: Float
+   *           example: 2.6
+   *         total_capital:
+   *           type: Float
+   *           example: 206340,56
+   *         amortization_time_days:
+   *           type: Int
+   *           example: 21
+   */
+
   router
     .get('/', loanControllerHandler.getLoan)
     .post('/:dni', loanControllerHandler.createLoan)

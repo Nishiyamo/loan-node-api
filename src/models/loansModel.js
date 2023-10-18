@@ -20,9 +20,8 @@ module.exports = (sequelize, DataType) => {
         notEmpty: true
       }
     },
-    amortization_time: {
-      type: DataType.STRING,
-      unique: true,
+    amortization_time_days: {
+      type: DataType.INTEGER,
       allowNull: false,
       validate: {
         notEmpty: true
