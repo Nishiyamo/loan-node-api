@@ -15,12 +15,18 @@ module.exports = (sequelize, DataType) => {
     total_capital: {
       type: DataType.STRING,
       allowNull: false,
-      unique: true,
       validate: {
         notEmpty: true
       }
     },
-    amortization_time_days: {
+    loan_fee: {
+      type: DataType.FLOAT,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    amortization_time: {
       type: DataType.INTEGER,
       allowNull: false,
       validate: {
