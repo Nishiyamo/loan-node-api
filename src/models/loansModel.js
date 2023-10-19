@@ -26,7 +26,7 @@ module.exports = (sequelize, DataType) => {
         notEmpty: true
       }
     },
-    amortization_time: {
+    amortization_time_years: {
       type: DataType.INTEGER,
       allowNull: false,
       validate: {

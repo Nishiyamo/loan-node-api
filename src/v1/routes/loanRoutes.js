@@ -108,9 +108,9 @@ module.exports = app => {
 
   router
     .get('/:dni', loanControllerHandler.getLoan)
-    .post('/:dni', loanControllerHandler.createLoan)
-    .patch('/:dni', loanControllerHandler.updateLoan)
-    .delete('/:dni', loanControllerHandler.deleteLoan)
+    .post('/', loanControllerHandler.createLoan)
+    .patch('/', loanControllerHandler.updateLoan)
+    .delete('/', loanControllerHandler.deleteLoan)
 
   app.use('/api/v1/loan', router)
 }
