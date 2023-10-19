@@ -13,7 +13,7 @@ module.exports = (sequelize, DataType) => {
       }
     },
     total_capital: {
-      type: DataType.STRING,
+      type: DataType.FLOAT,
       allowNull: false,
       validate: {
         notEmpty: true

@@ -1,19 +1,25 @@
+import sequelize from 'sequelize'
 module.exports = app => {
   const Loans = app.database.models.Loans
 
-  function getLoanService (dni) {
-    console.log(dni)
-
-    return
+  function getLoanService (nif) {
+    return Loans.findAll({
+      where: {
+        UserId: sequelize.literal(`"UserID" = (SELECT "id" FROM "Users" WHERE "dni" = '${nif}')`)
+      }
+    })
   }
-  function createLoanService () {
-    return
+  function createLoanService (loan) {
+    return Loans.create(loan)
   }
   function updateLoanService () {
-    return
   }
-  function deleteLoanService () {
-    return
+  function deleteLoanService (loan) {
+    return Loans.destroy({
+      where: {
+        id: loan
+      }
+    })
   }
 
   return {

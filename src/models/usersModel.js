@@ -35,7 +35,7 @@ module.exports = (sequelize, DataType) => {
   })
 
   Users.associate = (models) => {
-    Users.hasMany(models.Loans)
+    Users.hasOne(models.Loans)
   }
 
   return Users

@@ -9,7 +9,7 @@ module.exports = app => {
         res.json(response)
       )
       .catch(error => {
-        res.status(412).json({ msg: error.message })
+        res.status(500).json({ msg: error.message })
       })
   }
 
@@ -17,7 +17,7 @@ module.exports = app => {
     userServiceHandler.createUserService(req.body)
       .then(response => res.json(response))
       .catch(error => {
-        res.status(412).json({ msg: error.message })
+        res.status(500).json({ msg: error.message })
       })
   }
 
@@ -25,7 +25,7 @@ module.exports = app => {
     userServiceHandler.updateUserService(req.body)
       .then(response => res.json(response))
       .catch(error => {
-        res.status(412).json({ msg: error.message })
+        res.status(500).json({ msg: error.message })
       })
   }
 
@@ -39,7 +39,7 @@ module.exports = app => {
         res.json(msg)
       })
       .catch(error => {
-        res.status(412).json({ msg: error.message })
+        res.status(500).json({ msg: error.message })
       })
   }
 
