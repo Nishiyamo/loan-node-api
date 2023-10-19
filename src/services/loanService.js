@@ -1,7 +1,6 @@
 import sequelize from 'sequelize'
 module.exports = app => {
   const Loans = app.database.models.Loans
-  const Users = app.database.models.Users
 
   function getLoanService (nif) {
     return Loans.findAll({
@@ -17,7 +16,6 @@ module.exports = app => {
     const divPow = Math.pow(divAuxPart, monthsAmortizationPeriod)
     const divFinalPart = 1 - divPow
     const loanFee = (loan.total_capital * monthlyInterest) / divFinalPart
-    console.log('loanFee', loanFee)
     const loanJson = {
       tae: loan.tae,
       total_capital: loan.total_capital,

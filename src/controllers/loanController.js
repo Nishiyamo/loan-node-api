@@ -6,7 +6,6 @@ module.exports = app => {
   const getLoan = (req, res) => {
     loanServiceHandler.getLoanService(req.params.dni)
       .then(response => {
-        console.log(response)
         res.json(response)
       }
       )
