@@ -104,7 +104,7 @@ module.exports = app => {
    */
 
   router
-    .get('/', loanControllerHandler.getLoan)
+    .get('/:dni', loanControllerHandler.getLoan)
     .post('/:dni', loanControllerHandler.createLoan)
     .patch('/:dni', loanControllerHandler.updateLoan)
     .delete('/:dni', loanControllerHandler.deleteLoan)

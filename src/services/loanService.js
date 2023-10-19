@@ -1,5 +1,9 @@
 module.exports = app => {
-  function getLoanService () {
+  const Loans = app.database.models.Loans
+
+  function getLoanService (dni) {
+    console.log(dni)
+
     return
   }
   function createLoanService () {

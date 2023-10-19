@@ -1,15 +1,25 @@
 module.exports = app => {
-  function getUserService () {
-    return
+  const Users = app.database.models.User
+
+  function getUserService (nif) {
+    Users.findAll({
+      where: {
+        dni: nif
+      }
+    })
   }
-  function createUserService () {
-    return
+  function createUserService (user) {
+    Users.create(user)
   }
   function updateUserService () {
     return
   }
-  function deleteUserService () {
-    return
+  function deleteUserService (nif) {
+    Users.destroy({
+      where: {
+        dni: nif
+      }
+    })
   }
   return {
     getUserService,

@@ -107,7 +107,7 @@ module.exports = app => {
    */
 
   router
-    .get('/', userControllerHandler.getUser)
+    .get('/:dni', userControllerHandler.getUser)
     .post('/:dni', userControllerHandler.createUser)
     .patch('/:dni', userControllerHandler.updateUser)
     .delete('/:dni', userControllerHandler.deleteUser)
