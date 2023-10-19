@@ -98,7 +98,10 @@ module.exports = app => {
    *         total_capital:
    *           type: Float
    *           example: 206340,56
-   *         amortization_time_days:
+   *         loan_fee:
+   *           type: Float
+   *           example: 204,5
+   *         amortization_time:
    *           type: Int
    *           example: 21
    */
