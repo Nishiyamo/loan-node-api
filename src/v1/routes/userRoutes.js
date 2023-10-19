@@ -77,9 +77,8 @@ module.exports = app => {
    *                   type: string
    *                   example: OK
    *                 data:
-   *                   type: array
-   *                   items:
-   *                     $ref: "#/components/schemas/Users"
+   *                   type: string
+   *                   example: User deleted
    */
 
   /**
