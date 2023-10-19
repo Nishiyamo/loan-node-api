@@ -104,6 +104,12 @@ module.exports = app => {
    *         requested_capital:
    *           type: Float
    *           example: 201205.56
+   *         createdAt:
+   *            type: string
+   *            example: "2023-10-19T11:06:14.498Z"
+   *         updatedAt:
+   *            type: string
+   *            example: "2023-10-19T11:06:14.498Z"
    */
 
   router
