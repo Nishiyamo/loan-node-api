@@ -22,7 +22,7 @@ module.exports = app => {
   }
 
   const updateUser = (req, res) => {
-    userServiceHandler.updateUserService(req.params)
+    userServiceHandler.updateUserService(req.body)
       .then(response => res.json(response))
       .catch(error => {
         res.status(412).json({ msg: error.message })
@@ -31,7 +31,13 @@ module.exports = app => {
 
   const deleteUser = (req, res) => {
     userServiceHandler.deleteUserService(req.body.dni)
-      .then(response => res.json(response))
+      .then(response => {
+        let msg = 'User not deleted'
+        if (response === 1) {
+          msg = 'User deleted'
+        }
+        res.json(msg)
+      })
       .catch(error => {
         res.status(412).json({ msg: error.message })
       })
