@@ -4,22 +4,37 @@ module.exports = app => {
   const userServiceHandler = userService(app)
 
   const getUser = (req, res) => {
-    const userData = userServiceHandler.getUserService(req.params.dni)
-    res.send(userData)
+    userServiceHandler.getUserService(req.params.dni)
+      .then(response =>
+        res.json(response)
+      )
+      .catch(error => {
+        res.status(412).json({ msg: error.message })
+      })
   }
 
   const createUser = (req, res) => {
-    const createdUserData = userServiceHandler.createUserService(req.params)
-    res.send(createdUserData)
+    userServiceHandler.createUserService(req.body)
+      .then(response => res.json(response))
+      .catch(error => {
+        res.status(412).json({ msg: error.message })
+      })
   }
 
   const updateUser = (req, res) => {
-    const updatedUserData = userServiceHandler.updateUserService(req.params)
-    res.send(updatedUserData)
+    userServiceHandler.updateUserService(req.params)
+      .then(response => res.json(response))
+      .catch(error => {
+        res.status(412).json({ msg: error.message })
+      })
   }
 
   const deleteUser = (req, res) => {
     userServiceHandler.deleteUserService(req.params)
+      .then(response => res.json(response))
+      .catch(error => {
+        res.status(412).json({ msg: error.message })
+      })
   }
 
   return {

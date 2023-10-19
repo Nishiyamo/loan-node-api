@@ -108,7 +108,7 @@ module.exports = app => {
 
   router
     .get('/:dni', userControllerHandler.getUser)
-    .post('/:dni', userControllerHandler.createUser)
+    .post('/', userControllerHandler.createUser)
     .patch('/:dni', userControllerHandler.updateUser)
     .delete('/:dni', userControllerHandler.deleteUser)
 
