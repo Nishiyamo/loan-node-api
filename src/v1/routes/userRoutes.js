@@ -115,8 +115,8 @@ module.exports = app => {
   router
     .get('/:dni', userControllerHandler.getUser)
     .post('/', userControllerHandler.createUser)
-    .patch('/:dni', userControllerHandler.updateUser)
-    .delete('/:dni', userControllerHandler.deleteUser)
+    .patch('/', userControllerHandler.updateUser)
+    .delete('/', userControllerHandler.deleteUser)
 
   app.use('/api/v1/user', router)
 }

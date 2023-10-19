@@ -30,7 +30,7 @@ module.exports = app => {
   }
 
   const deleteUser = (req, res) => {
-    userServiceHandler.deleteUserService(req.params)
+    userServiceHandler.deleteUserService(req.body.dni)
       .then(response => res.json(response))
       .catch(error => {
         res.status(412).json({ msg: error.message })
