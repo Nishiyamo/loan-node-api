@@ -7,10 +7,16 @@ module.exports = app => {
 
   /**
    * @openapi
-   * /api/v1/user:
+   * /api/v1/user/{dni}:
    *   get:
    *     tags:
    *       - Users
+   *     description: Get one user information
+   *     parameters:
+   *       - name: dni
+   *         in: path
+   *         required: true
+   *         type: string
    *     responses:
    *       200:
    *         description: OK
@@ -99,7 +105,7 @@ module.exports = app => {
    *           example: "712377F"
    *         email:
    *           type: string
-   *           example: "abdqwety@gmail.com"
+   *           example: "abcsqwerty@gmail.com"
    *         requested_capital:
    *           type: Float
    *           example: 201205.56
