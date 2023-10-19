@@ -35,7 +35,10 @@ module.exports = (sequelize, DataType) => {
   })
 
   Users.associate = (models) => {
-    Users.hasOne(models.Loans)
+    Users.hasOne(models.Loans, {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE'
+    })
   }
 
   return Users
