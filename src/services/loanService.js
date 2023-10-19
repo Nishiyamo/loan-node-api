@@ -1,4 +1,6 @@
 import sequelize from 'sequelize'
+import { monthlyFeeCalculator } from '../utils/monthlyFeeCalculator'
+
 module.exports = app => {
   const Loans = app.database.models.Loans
 
@@ -10,16 +12,10 @@ module.exports = app => {
     })
   }
   function createLoanService (loan) {
-    const monthlyInterest = (loan.tae / 100) / 12
-    const monthsAmortizationPeriod = -(loan.amortization_time_years * 12)
-    const divAuxPart = 1 + monthlyInterest
-    const divPow = Math.pow(divAuxPart, monthsAmortizationPeriod)
-    const divFinalPart = 1 - divPow
-    const loanFee = (loan.total_capital * monthlyInterest) / divFinalPart
     const loanJson = {
       tae: loan.tae,
       total_capital: loan.total_capital,
-      loan_fee: loanFee,
+      loan_fee: monthlyFeeCalculator(loan),
       amortization_time_years: loan.amortization_time_years,
       UserId: sequelize.literal(`(SELECT "id" FROM "Users" WHERE "dni" = '${loan.nif}')`)
     }
