@@ -12,10 +12,12 @@ module.exports = app => {
     })
   }
   function createLoanService (loan) {
+    const monthlyFee = monthlyFeeCalculator(loan)
     const loanJson = {
       tae: loan.tae,
-      total_capital: loan.total_capital,
-      loan_fee: monthlyFeeCalculator(loan),
+      requested_capital: loan.requested_capital,
+      loan_fee: monthlyFee,
+      total_capital_to_return: (monthlyFee * loan.amortization_time_years * 12),
       amortization_time_years: loan.amortization_time_years,
       UserId: sequelize.literal(`(SELECT "id" FROM "Users" WHERE "dni" = '${loan.nif}')`)
     }

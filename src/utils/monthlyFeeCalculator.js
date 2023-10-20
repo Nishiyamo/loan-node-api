@@ -4,5 +4,5 @@ export function monthlyFeeCalculator (loan) {
   const divAuxPart = 1 + monthlyInterest
   const divPow = Math.pow(divAuxPart, monthsAmortizationPeriod)
   const divFinalPart = 1 - divPow
-  return (loan.total_capital * monthlyInterest) / divFinalPart
+  return (loan.requested_capital * monthlyInterest) / divFinalPart
 }
