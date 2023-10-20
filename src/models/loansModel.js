@@ -12,7 +12,14 @@ module.exports = (sequelize, DataType) => {
         notEmpty: true
       }
     },
-    total_capital: {
+    requested_capital: {
+      type: DataType.FLOAT,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    total_capital_to_return: {
       type: DataType.FLOAT,
       allowNull: false,
       validate: {

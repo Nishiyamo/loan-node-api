@@ -27,10 +27,6 @@ module.exports = (sequelize, DataType) => {
       validate: {
         notEmpty: true
       }
-    },
-    requested_capital: {
-      type: DataType.FLOAT,
-      allowNull: true
     }
   })
 
