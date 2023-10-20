@@ -23,7 +23,7 @@ module.exports = app => {
     }
     return Loans.create(loanJson)
   }
-  function updateLoanService () {
+  function updateLoanService (loan) {
   }
   function deleteLoanService (loan) {
     return Loans.destroy({
