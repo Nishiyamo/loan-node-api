@@ -24,6 +24,21 @@ module.exports = app => {
     return Loans.create(loanJson)
   }
   function updateLoanService (loan) {
+    const monthlyFee = monthlyFeeCalculator(loan)
+    const loanJson = {
+      tae: loan.tae,
+      requested_capital: loan.requested_capital,
+      loan_fee: monthlyFee,
+      total_capital_to_return: (monthlyFee * loan.amortization_time_years * 12),
+      amortization_time_years: loan.amortization_time_years
+    }
+    const whereLoan = {
+      where: {
+        id: loan.id,
+        UserId: sequelize.literal(`(SELECT "id" FROM "Users" WHERE "dni" = '${loan.nif}')`)
+      }
+    }
+    return Loans.update(loanJson, whereLoan)
   }
   function deleteLoanService (loan) {
     return Loans.destroy({
