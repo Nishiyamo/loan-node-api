@@ -4,10 +4,6 @@ export function checkNIF (nif) {
     let num = nif.match(/\d+/)
     num = (nif[0] != 'Z' ? nif[0] != 'Y' ? 0 : 1 : 2) + num
     if (nif[8] == 'TRWAGMYFPDXBNJZSQVHLCKE'[num % 23]) {
-      const typeNIF = /^\d/.test(nif) ? 'DNI' : 'NIE'
-      if (typeNIF !== 'DNI' || typeNIF !== 'NIE') {
-        return false
-      }
       return true
     }
   }
