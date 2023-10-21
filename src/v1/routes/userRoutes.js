@@ -11,7 +11,7 @@ module.exports = app => {
    *   get:
    *     tags:
    *       - Users
-   *     description: Get one user information
+   *     description: Get user information
    *     parameters:
    *       - name: nif
    *         in: query
@@ -69,7 +69,9 @@ module.exports = app => {
    *                   items:
    *                     $ref: "#/components/schemas/Users"
    *        400:
-   *          description: Error en la solicitud
+   *          description: Bad formed NIF
+   *        500:
+   *          description: Internal server error with description
    *   patch:
    *     tags:
    *       - Users
@@ -88,6 +90,10 @@ module.exports = app => {
    *                    type: array
    *                    items:
    *                      $ref: "#/components/schemas/Users"
+   *        400:
+   *          description: Bad formed data
+   *        500:
+   *          description: Internal server error with description
    *   delete:
    *     tags:
    *       - Users
@@ -105,6 +111,10 @@ module.exports = app => {
    *                  data:
    *                    type: string
    *                    example: User deleted
+   *        400:
+   *          description: Bad formed NIF
+   *        500:
+   *          description: Internal server error with description
    */
 
   /**
