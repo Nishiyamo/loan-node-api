@@ -7,14 +7,14 @@ module.exports = app => {
 
   /**
    * @openapi
-   * /api/v1/user/{dni}:
+   * /api/v1/user/:
    *   get:
    *     tags:
    *       - Users
    *     description: Get one user information
    *     parameters:
-   *       - name: dni
-   *         in: path
+   *       - name: nif
+   *         in: query
    *         required: true
    *         type: string
    *     responses:
@@ -35,8 +35,26 @@ module.exports = app => {
    *   post:
    *     tags:
    *       - Users
+   *     consumes:
+   *        - application/json
+   *     produces:
+   *        - application/json
+   *     parameters:
+   *        - in: body
+   *          name: datos
+   *          description: Datos del usuario
+   *          required: true
+   *          schema:
+   *            type: object
+   *            properties:
+   *              name:
+   *                type: string
+   *              dni:
+   *                type: string
+   *              email:
+   *                type: string
    *     responses:
-   *       200:
+   *        200:
    *         description: OK
    *         content:
    *           application/json:
@@ -50,41 +68,43 @@ module.exports = app => {
    *                   type: array
    *                   items:
    *                     $ref: "#/components/schemas/Users"
+   *        400:
+   *          description: Error en la solicitud
    *   patch:
    *     tags:
    *       - Users
    *     responses:
-   *       200:
-   *         description: OK
-   *         content:
-   *           application/json:
-   *             schema:
-   *               type: object
-   *               properties:
-   *                 status:
-   *                   type: string
-   *                   example: OK
-   *                 data:
-   *                   type: array
-   *                   items:
-   *                     $ref: "#/components/schemas/Users"
+   *        200:
+   *          description: OK
+   *          content:
+   *            application/json:
+   *              schema:
+   *                type: object
+   *                properties:
+   *                  status:
+   *                    type: string
+   *                    example: OK
+   *                  data:
+   *                    type: array
+   *                    items:
+   *                      $ref: "#/components/schemas/Users"
    *   delete:
    *     tags:
    *       - Users
    *     responses:
-   *       200:
-   *         description: OK
-   *         content:
-   *           application/json:
-   *             schema:
-   *               type: object
-   *               properties:
-   *                 status:
-   *                   type: string
-   *                   example: OK
-   *                 data:
-   *                   type: string
-   *                   example: User deleted
+   *        200:
+   *          description: OK
+   *          content:
+   *            application/json:
+   *              schema:
+   *                type: object
+   *                properties:
+   *                  status:
+   *                    type: string
+   *                    example: OK
+   *                  data:
+   *                    type: string
+   *                    example: User deleted
    */
 
   /**
@@ -106,9 +126,6 @@ module.exports = app => {
    *         email:
    *           type: string
    *           example: "abcsqwerty@gmail.com"
-   *         requested_capital:
-   *           type: Float
-   *           example: 201205.56
    *         createdAt:
    *            type: string
    *            example: "2023-10-19T11:06:14.498Z"
@@ -118,7 +135,7 @@ module.exports = app => {
    */
 
   router
-    .get('/:dni', userControllerHandler.getUser)
+    .get('/', userControllerHandler.getUser)
     .post('/', userControllerHandler.createUser)
     .patch('/', userControllerHandler.updateUser)
     .delete('/', userControllerHandler.deleteUser)

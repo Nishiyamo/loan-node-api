@@ -7,10 +7,16 @@ module.exports = app => {
 
   /**
    * @openapi
-   * /api/v1/loan:
+   * /api/v1/loan/:
    *   get:
    *     tags:
    *       - Loans
+   *     description: Get the loans of a user
+   *     parameters:
+   *       - name: nif
+   *         in: query
+   *         required: true
+   *         type: string
    *     responses:
    *       200:
    *         description: OK
@@ -26,6 +32,7 @@ module.exports = app => {
    *                   type: array
    *                   items:
    *                     $ref: "#/components/schemas/Loans"
+   *
    *   post:
    *     tags:
    *       - Loans
@@ -77,9 +84,9 @@ module.exports = app => {
    *                   type: string
    *                   example: OK
    *                 data:
-   *                   type: array
+   *                   type: string
    *                   items:
-   *                     $ref: "#/components/schemas/Loans"
+   *                     'Loan deleted'
    */
 
   /**
@@ -94,20 +101,32 @@ module.exports = app => {
    *           example: 12345
    *         tae:
    *           type: Float
-   *           example: 2.6
-   *         total_capital:
+   *           example: 5.2
+   *         requested_capital:
    *           type: Float
-   *           example: 206340,56
+   *           example: 20000
+   *         total_capital_to_return:
+   *           type: Float
+   *           example: 21643.75814239593
    *         loan_fee:
    *           type: Float
-   *           example: 204,5
+   *           example: 601.21
    *         amortization_time:
    *           type: Int
-   *           example: 21
+   *           example: 3
+   *         createdAt:
+   *            type: string
+   *            example: "2023-10-19T11:06:14.498Z"
+   *         updatedAt:
+   *            type: string
+   *            example: "2023-10-19T11:06:14.498Z"
+   *         UserId:
+   *           type: Int
+   *           example: 4
    */
 
   router
-    .get('/:dni', loanControllerHandler.getLoan)
+    .get('/', loanControllerHandler.getLoan)
     .post('/', loanControllerHandler.createLoan)
     .patch('/', loanControllerHandler.updateLoan)
     .delete('/', loanControllerHandler.deleteLoan)
