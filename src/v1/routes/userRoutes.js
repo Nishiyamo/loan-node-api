@@ -69,12 +69,30 @@ module.exports = app => {
    *                   items:
    *                     $ref: "#/components/schemas/Users"
    *        400:
-   *          description: Bad formed NIF
+   *          description: Bad formed fields
    *        500:
    *          description: Internal server error with description
    *   patch:
    *     tags:
    *       - Users
+   *     consumes:
+   *        - application/json
+   *     produces:
+   *        - application/json
+   *     parameters:
+   *        - in: body
+   *          name: datos
+   *          description: Datos del usuario
+   *          required: true
+   *          schema:
+   *            type: object
+   *            properties:
+   *              name:
+   *                type: string
+   *              dni:
+   *                type: string
+   *              email:
+   *                type: string
    *     responses:
    *        200:
    *          description: OK
@@ -91,7 +109,7 @@ module.exports = app => {
    *                    items:
    *                      $ref: "#/components/schemas/Users"
    *        400:
-   *          description: Bad formed data
+   *          description: Bad formed fields
    *        500:
    *          description: Internal server error with description
    *   delete:

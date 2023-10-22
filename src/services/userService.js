@@ -12,7 +12,7 @@ module.exports = app => {
     return Users.create(user)
   }
   function updateUserService (user) {
-    return Users.update({ user }, {
+    return Users.update(user, {
       where: {
         dni: user.nif
       }

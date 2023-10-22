@@ -19,21 +19,17 @@ module.exports = app => {
   }
 
   const createUser = (req, res) => {
-    if (checkNIF(req.body.nif) && req.body.name && req.body.email) {
+    if (checkNIF(req.body.dni) && req.body.name && req.body.email) {
       userServiceHandler.createUserService(req.body)
         .then(response => {
-          let msg = 'User not created'
-          if (response === 1) {
-            msg = 'User created'
-          }
-          res.json(msg)
+          res.json(response)
         })
         .catch(error => {
           res.status(500).json({ msg: error.message })
         })
     } else {
       let msg = ''
-      if (!checkNIF(req.body.nif)) {
+      if (!checkNIF(req.body.dni)) {
         msg = 'Bad formed NIF'
       }
       if (!req.body.name) {
@@ -51,7 +47,7 @@ module.exports = app => {
       userServiceHandler.updateUserService(req.body)
         .then(response => {
           let msg = 'User not updated'
-          if (response === 1) {
+          if (response[0] === 1) {
             msg = 'User updated'
           }
           res.json(msg)

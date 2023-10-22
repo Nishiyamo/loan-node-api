@@ -54,7 +54,7 @@ module.exports = app => {
       loanServiceHandler.updateLoanService(req.body)
         .then(response => {
           let msg = 'Loan not updated'
-          if (response === 1) {
+          if (response[0] === 1) {
             msg = 'Loan updated'
           }
           res.json(msg)
