@@ -35,6 +35,7 @@ module.exports = app => {
    *   post:
    *     tags:
    *       - Users
+   *     description: Create a user information, the email and dni should be unique
    *     consumes:
    *        - application/json
    *     produces:
@@ -75,6 +76,7 @@ module.exports = app => {
    *   patch:
    *     tags:
    *       - Users
+   *     description: Update a user information, based on the dni, we can modify also the email but keep in mind that it should be unique
    *     consumes:
    *        - application/json
    *     produces:
@@ -105,9 +107,8 @@ module.exports = app => {
    *                    type: string
    *                    example: OK
    *                  data:
-   *                    type: array
-   *                    items:
-   *                      $ref: "#/components/schemas/Users"
+   *                    type: string
+   *                    example: User Updated
    *        400:
    *          description: Bad formed fields
    *        500:
@@ -115,6 +116,21 @@ module.exports = app => {
    *   delete:
    *     tags:
    *       - Users
+   *     description: Delete the user info and the loans associated with him/her
+   *     consumes:
+   *        - application/json
+   *     produces:
+   *        - application/json
+   *     parameters:
+   *        - in: body
+   *          name: datos
+   *          description: Datos del usuario
+   *          required: true
+   *          schema:
+   *            type: object
+   *            properties:
+   *              nif:
+   *                type: string
    *     responses:
    *        200:
    *          description: OK
