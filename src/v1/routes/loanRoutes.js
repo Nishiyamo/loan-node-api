@@ -32,10 +32,35 @@ module.exports = app => {
    *                   type: array
    *                   items:
    *                     $ref: "#/components/schemas/Loans"
+   *       400:
+   *         description: Bad formed nif
+   *       500:
+   *         description: Internal server error with description
    *
    *   post:
    *     tags:
    *       - Loans
+   *     description: Create a loan for a user
+   *     consumes:
+   *        - application/json
+   *     produces:
+   *        - application/json
+   *     parameters:
+   *        - in: body
+   *          name: datos
+   *          description: Data to create a loan
+   *          required: true
+   *          schema:
+   *            type: object
+   *            properties:
+   *              tae:
+   *                type: number
+   *              requested_capital:
+   *                type: number
+   *              amortization_time:
+   *                type: integer
+   *              nif:
+   *                type: string
    *     responses:
    *       200:
    *         description: OK
@@ -51,9 +76,34 @@ module.exports = app => {
    *                   type: array
    *                   items:
    *                     $ref: "#/components/schemas/Loans"
+   *       400:
+   *         description: Bad formed fields
+   *       500:
+   *         description: Internal server error with description
    *   patch:
    *     tags:
    *       - Loans
+   *     description: Update a loan using the nif of the user and the id of the loan
+   *     consumes:
+   *        - application/json
+   *     parameters:
+   *        - in: body
+   *          name: datos
+   *          description: Data to update a loan
+   *          required: true
+   *          schema:
+   *            type: object
+   *            properties:
+   *              id:
+   *                type: number
+   *              tae:
+   *                type: number
+   *              requested_capital:
+   *                type: number
+   *              amortization_time:
+   *                type: integer
+   *              nif:
+   *                type: string
    *     responses:
    *       200:
    *         description: OK
@@ -69,9 +119,28 @@ module.exports = app => {
    *                   type: array
    *                   items:
    *                     $ref: "#/components/schemas/Loans"
+   *       400:
+   *         description: Bad formed fields
+   *       500:
+   *         description: Internal server error with description
    *   delete:
    *     tags:
    *       - Loans
+   *     description: Delete one loan of the user
+   *     consumes:
+   *        - application/json
+   *     parameters:
+   *        - in: body
+   *          name: datos
+   *          description: Data to create a loan
+   *          required: true
+   *          schema:
+   *            type: object
+   *            properties:
+   *              id:
+   *                type: number
+   *              nif:
+   *                type: string
    *     responses:
    *       200:
    *         description: OK
@@ -87,6 +156,10 @@ module.exports = app => {
    *                   type: string
    *                   items:
    *                     'Loan deleted'
+   *       400:
+   *         description: Bad formed NIF or missing ID
+   *       500:
+   *         description: Internal server error with description
    */
 
   /**

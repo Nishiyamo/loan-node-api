@@ -43,7 +43,7 @@ module.exports = app => {
    *     parameters:
    *        - in: body
    *          name: datos
-   *          description: Datos del usuario
+   *          description: User data
    *          required: true
    *          schema:
    *            type: object
@@ -84,7 +84,7 @@ module.exports = app => {
    *     parameters:
    *        - in: body
    *          name: datos
-   *          description: Datos del usuario
+   *          description: User data
    *          required: true
    *          schema:
    *            type: object
@@ -124,7 +124,7 @@ module.exports = app => {
    *     parameters:
    *        - in: body
    *          name: datos
-   *          description: Datos del usuario
+   *          description: User data
    *          required: true
    *          schema:
    *            type: object
