@@ -43,7 +43,8 @@ module.exports = app => {
   function deleteLoanService (loan) {
     return Loans.destroy({
       where: {
-        id: loan
+        id: loan,
+        UserId: sequelize.literal(`(SELECT "id" FROM "Users" WHERE "dni" = '${loan.nif}')`)
       }
     })
   }

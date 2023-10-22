@@ -1,5 +1,4 @@
 module.exports = (sequelize, DataType) => {
-  const checkNIF = require('../utils/checkNIF.js')
   const Users = sequelize.define('Users', {
     id: {
       type: DataType.INTEGER,
