@@ -131,7 +131,7 @@
 			"response": []
 		},
 		{
-			"name": "Delete User Info Copy",
+			"name": "Delete Loan Info",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -144,7 +144,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"nif\": \"71149444W\"\r\n}"
+					"raw": "{\r\n    \"id\": 6,\r\n    \"nif\": \"71149444W\"\r\n}"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:3000/api/v1/loan/",
@@ -179,7 +179,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Ivan Lorenzo\",\r\n    \"nif\": \"71149444W\",\r\n    \"email\": \"abcsqwerty@gmail.com\"\r\n}"
+					"raw": "{\r\n    \"name\": \"Ivan Lorenzo\",\r\n    \"dni\": \"71149444W\",\r\n    \"email\": \"abcsqwerty@gmail.com\"\r\n}"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:3000/api/v1/user/",
@@ -249,7 +249,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nif\": \"71149444W\",\r\n    \"id\": 4,\r\n    \"tae\": 2,\r\n    \"requested_capital\": 20000,\r\n    \"total_capital_to_return\": 21643.75814239593,\r\n    \"loan_fee\": 601.2155039554425,\r\n    \"amortization_time_years\": 3\r\n}"
+					"raw": "{\r\n    \"nif\": \"71149444W\",\r\n    \"id\": 6,\r\n    \"tae\": 2,\r\n    \"requested_capital\": 20000,\r\n    \"amortization_time_years\": 3\r\n}"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:3000/api/v1/loan/",
